@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&display=swap"
+    rel="stylesheet"/>
+    <title>Rock, Paper, Scissors Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 16px;
+        }
+        body {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+        }
+        .navigation {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 75px;
+        }
+        .navigation__list {
+            display: flex;
+            flex-flow: row wrap;
+            height: 100%;
+            padding: 0 5%;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+        }
+        .navigation__list__brand {
+            font-size: 1.7rem;
+            font-weight: bold;
+            line-height: 1;
+            letter-spacing: 0.012rem;
+        }
+        .navigation__list__who {
+            padding: 7px;
+            border: 1px solid black;
+            border-radius: 5px;
+            color: black;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .navigation__list__who:hover {
+            color: white;
+            background-color: black;
+        }
+        .game__container {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 75px;
+            height: calc(100vh - 75px);
+        }
+        .game__container__head {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            width: 100%;
+            padding: 15px 0;
+        }
+        .game__round {
+            margin-bottom: 25px;
+            text-align: center;
+            color: #ec1119;
+            letter-spacing: 0.05rem;
+            font-size: 1.5rem;
+        }
+        .game__scoreboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 55%;
+        }
+        .game__scoreboard__column {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            text-align: center;
+            align-items: center;
+        }
+        .game__scoreboard__column__result {
+            font-size: 1.1rem;
+            letter-spacing: 0.05rem;
+            color: gray;
+        }
+        .game__count {
+            font-size: 2rem;
+        }
+        .game__container__body {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 55%;
+            align-items: center;
+            padding: 15px 0;
+            margin-top: 1px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navigation">
+        <ul class="navigation__list">
+            <li class="navigation__list__brand">oscarvedo</li>
+            <li><a href="https://www.linkedin.com/in/oscar-mauricio-acevedo-porras-b98716215/" target="_blank" class="navigation__list__who">My Linkedin</a></li>
+        </ul>
+    </nav>
+    <main class="game__container">
+        <div class="game__container__head">
+            <p class="game__round">ROUND 1</p>
+            <div class="game__scoreboard">
+                <div class="game__scoreboard__column">
+                    <p class="game__scoreboard__column__result">WIN</p>
+                    <p class="game__count">0</p>
+                </div>
+                <div class="game__scoreboard__column">
+                    <p class="game__scoreboard__column__result">TIES</p>
+                    <p class="game__count">0</p>
+                </div>
+                <div class="game__scoreboard__column">
+                    <p class="game__scoreboard__column__result">WIN</p>
+                    <p class="game__count">0</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="game__container__body">
+            <div class="game__column">
+            </div>
+            <div class="game__column">
+                <h3>You won</h3>
+            </div>
+            <div cclass="game__column">
+            </div>
+        </div>
+    </main>
+    <script src="game.js"></script>
+</body>
+</html>
