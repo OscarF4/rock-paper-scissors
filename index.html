@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&display=swap"
     rel="stylesheet"/>
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
     <title>Rock, Paper, Scissors Game</title>
+    <link rel="icon" type="image/png" href="https://firebasestorage.googleapis.com/v0/b/rock-paper-scissors-oscarvedo.appspot.com/o/favicon.png?alt=media&token=ee3a85bf-e28f-445f-84a7-795fa1a7d816">
     <style>
         * {
             margin: 0;
@@ -21,8 +23,6 @@
             font-family: 'Poppins', sans-serif;
         }
         .navigation {
-            position: fixed;
-            top: 0;
             width: 100%;
             height: 75px;
         }
@@ -55,13 +55,16 @@
         }
         .game__container {
             display: flex;
-            flex-flow: column;
             justify-content: center;
             align-items: center;
-            margin-top: 75px;
             height: calc(100vh - 75px);
         }
-        .game__container__head {
+        @media (max-height: 650px) {
+            .game__container {
+                height: auto;
+            }
+        }
+        .game__container__div {
             display: flex;
             flex-flow: column;
             align-items: center;
@@ -79,6 +82,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             width: 55%;
+            padding: 15px 0;
         }
         .game__scoreboard__column {
             display: grid;
@@ -94,14 +98,95 @@
         .game__count {
             font-size: 2rem;
         }
-        .game__container__body {
+        .game__container__board {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             width: 55%;
-            align-items: center;
             padding: 15px 0;
             margin-top: 1px;
+            align-items: center;
             text-align: center;
+        }
+        .board__column {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .player__img__div {
+            display: flex;
+            align-items: center;
+            height: 220px;
+        }
+        .player__initial__img {
+            width: 100%;
+            transition: 0.5s;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes playerAnimation {
+            0%   { transform: rotate(0); }
+            20%  { transform: rotate(-15deg); }
+            40%  { transform: rotate(10deg); }
+            60%  { transform: rotate(-15deg); }
+            80% { transform: rotate(10deg); }
+            100% { transform: rotate(-15deg); }
+        }
+        .player__initial__img:hover {
+            animation-name: playerAnimation;
+            animation-timing-function: ease;
+        }
+        .player__options {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        .player__options__btn {
+            padding: 15px;
+            border: 0;
+            margin: 0;
+            border-radius: 100%;
+            background-color: #ec1119;
+            cursor: pointer;
+        }
+        .player__options__btn:hover {
+            background-color: #f14449;
+        }
+        .far{
+            font-size: 1.5rem;
+            color: rgb(240,240,240);
+        }
+        .machine__initial__img {
+            width: 100%;
+            transition: 0.5s;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes machineAnimation {
+            0%   { transform: rotate(0); }
+            20%  { transform: rotate(15deg); }
+            40%  { transform: rotate(-10deg); }
+            60%  { transform: rotate(15deg); }
+            80% { transform: rotate(-10deg); }
+            100% { transform: rotate(15deg); }
+        }
+        .machine__initial__img:hover {
+            animation-name: machineAnimation;
+            animation-timing-function: ease;
+        }
+        .machine__options {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        .machine__options__btn {
+            padding: 15px;
+            border: 0;
+            margin: 0;
+            border-radius: 100%;
+            background-color: gray;
         }
     </style>
 </head>
@@ -113,7 +198,7 @@
         </ul>
     </nav>
     <main class="game__container">
-        <div class="game__container__head">
+        <div class="game__container__div">
             <p class="game__round">ROUND 1</p>
             <div class="game__scoreboard">
                 <div class="game__scoreboard__column">
@@ -129,15 +214,43 @@
                     <p class="game__count">0</p>
                 </div>
             </div>
-        </div>
 
-        <div class="game__container__body">
-            <div class="game__column">
-            </div>
-            <div class="game__column">
-                <h3>You won</h3>
-            </div>
-            <div cclass="game__column">
+            <div class="game__container__board">
+                <div class="board__column">
+                    <div class="player__img__div">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/rock-paper-scissors-oscarvedo.appspot.com/o/arm.png?alt=media&token=e7461542-1a37-451b-a705-d08716d531fd" alt="Players arm" class="player__initial__img">
+                    </div>
+                    <div class="player__options">
+                        <button class="player__options__btn">
+                            <i class="far fa-hand-rock"></i>
+                        </button>
+                        <button class="player__options__btn">
+                            <i class="far fa-hand-spock"></i>
+                        </button>
+                        <button class="player__options__btn">
+                            <i class="far fa-hand-peace"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="board__column">
+                    <h3>You won!</h3>
+                </div>
+                <div class="board__column">
+                    <div class="player__img__div">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/rock-paper-scissors-oscarvedo.appspot.com/o/machine-arm.png?alt=media&token=48fb92a6-458f-4a3e-9ec9-d512e1bc29d2" alt="Players arm" class="machine__initial__img">
+                    </div>
+                    <div class="machine__options">
+                        <button class="machine__options__btn">
+                            <i class="far fa-hand-rock"></i>
+                        </button>
+                        <button class="machine__options__btn">
+                            <i class="far fa-hand-spock"></i>
+                        </button>
+                        <button class="machine__options__btn">
+                            <i class="far fa-hand-peace"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
