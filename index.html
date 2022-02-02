@@ -68,8 +68,13 @@
             display: flex;
             flex-flow: column;
             align-items: center;
-            width: 100%;
+            width: 55%;
             padding: 15px 0;
+        }
+        @media (max-width: 1250px) {
+            .game__container__div {
+                width: 90%;
+            }
         }
         .game__round {
             margin-bottom: 25px;
@@ -81,7 +86,7 @@
         .game__scoreboard {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            width: 55%;
+            width: 100%;
             padding: 15px 0;
         }
         .game__scoreboard__column {
@@ -101,7 +106,7 @@
         .game__container__board {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            width: 55%;
+            width: 100%;
             padding: 15px 0;
             margin-top: 1px;
             align-items: center;
@@ -118,11 +123,11 @@
             align-items: center;
             height: 220px;
         }
-        .player__initial__img {
+        .player__current__img {
             width: 100%;
             transition: 0.5s;
-            animation-duration: 1s;
-            animation-iteration-count: infinite;
+            animation-duration: 1.1s;
+            animation-iteration-count: 1;
         }
         @keyframes playerAnimation {
             0%   { transform: rotate(0); }
@@ -131,10 +136,6 @@
             60%  { transform: rotate(-15deg); }
             80% { transform: rotate(10deg); }
             100% { transform: rotate(-15deg); }
-        }
-        .player__initial__img:hover {
-            animation-name: playerAnimation;
-            animation-timing-function: ease;
         }
         .player__options {
             display: grid;
@@ -157,10 +158,18 @@
             font-size: 1.5rem;
             color: rgb(240,240,240);
         }
-        .machine__initial__img {
+        .vs__heading {
+            color: red;
+        }
+        .machine__img__div {
+            display: flex;
+            align-items: center;
+            height: 220px;
+        }
+        .machine__current__img {
             width: 100%;
             transition: 0.5s;
-            animation-duration: 1s;
+            animation-duration: 1.1s;
             animation-iteration-count: infinite;
         }
         @keyframes machineAnimation {
@@ -170,10 +179,6 @@
             60%  { transform: rotate(15deg); }
             80% { transform: rotate(-10deg); }
             100% { transform: rotate(15deg); }
-        }
-        .machine__initial__img:hover {
-            animation-name: machineAnimation;
-            animation-timing-function: ease;
         }
         .machine__options {
             display: grid;
@@ -203,50 +208,50 @@
             <div class="game__scoreboard">
                 <div class="game__scoreboard__column">
                     <p class="game__scoreboard__column__result">WIN</p>
-                    <p class="game__count">0</p>
+                    <p class="game__count player__score">0</p>
                 </div>
                 <div class="game__scoreboard__column">
                     <p class="game__scoreboard__column__result">TIES</p>
-                    <p class="game__count">0</p>
+                    <p class="game__count game__ties">0</p>
                 </div>
                 <div class="game__scoreboard__column">
                     <p class="game__scoreboard__column__result">WIN</p>
-                    <p class="game__count">0</p>
+                    <p class="game__count machine__score">0</p>
                 </div>
             </div>
 
             <div class="game__container__board">
                 <div class="board__column">
                     <div class="player__img__div">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/rock-paper-scissors-oscarvedo.appspot.com/o/arm.png?alt=media&token=e7461542-1a37-451b-a705-d08716d531fd" alt="Players arm" class="player__initial__img">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/rock-paper-scissors-oscarvedo.appspot.com/o/arm.png?alt=media&token=e7461542-1a37-451b-a705-d08716d531fd" alt="Players arm" class="player__current__img">
                     </div>
                     <div class="player__options">
-                        <button class="player__options__btn">
+                        <button class="player__options__btn rock__btn">
                             <i class="far fa-hand-rock"></i>
                         </button>
-                        <button class="player__options__btn">
+                        <button class="player__options__btn paper__btn">
                             <i class="far fa-hand-spock"></i>
                         </button>
-                        <button class="player__options__btn">
+                        <button class="player__options__btn scissors__btn">
                             <i class="far fa-hand-peace"></i>
                         </button>
                     </div>
                 </div>
                 <div class="board__column">
-                    <h3>You won!</h3>
+                    <h1 class="vs__heading">VS</h1>
                 </div>
                 <div class="board__column">
-                    <div class="player__img__div">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/rock-paper-scissors-oscarvedo.appspot.com/o/machine-arm.png?alt=media&token=48fb92a6-458f-4a3e-9ec9-d512e1bc29d2" alt="Players arm" class="machine__initial__img">
+                    <div class="machine__img__div">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/rock-paper-scissors-oscarvedo.appspot.com/o/machine-arm.png?alt=media&token=48fb92a6-458f-4a3e-9ec9-d512e1bc29d2" alt="Players arm" class="machine__current__img">
                     </div>
                     <div class="machine__options">
-                        <button class="machine__options__btn">
+                        <button class="machine__options__btn machine__rock__btn">
                             <i class="far fa-hand-rock"></i>
                         </button>
-                        <button class="machine__options__btn">
+                        <button class="machine__options__btn machine__paper__btn">
                             <i class="far fa-hand-spock"></i>
                         </button>
-                        <button class="machine__options__btn">
+                        <button class="machine__options__btn machine__scissors__btn">
                             <i class="far fa-hand-peace"></i>
                         </button>
                     </div>
